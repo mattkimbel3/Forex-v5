@@ -1,0 +1,407 @@
+{% extends "dashboard/layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-chart">
+                    <div class="card-header ">
+                        <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h5 class="card-category">Trading Statistics</h5>
+                                <h2 class="card-title">Profitability</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                                        <input type="radio" name="options" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Last Week</span>
+                                        <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-single-02"></i>
+                    </span>
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple" id="1">
+                                        <input type="radio" class="d-none d-sm-none" name="options">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Last Month</span>
+                                        <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-gift-2"></i>
+                    </span>
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple" id="2">
+                                        <input type="radio" class="d-none" name="options">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">All Time</span>
+                                        <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-tap-02"></i>
+                    </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="chartBig1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">Forex Trading Statistics</h5>
+                        <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="chartLinePurple"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">Options Trading Statistics</h5>
+                        <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="CountryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">Crypto Trading Statistics</h5>
+                        <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="chartLineGreen"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card card-tasks">
+                    <div class="card-header ">
+                        <h6 class="title d-inline">Tasks(5)</h6>
+                        <p class="card-category d-inline">today</p>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-link dropdown-toggle btn-icon"
+                                    data-toggle="dropdown">
+                                <i class="tim-icons icon-settings-gear-63"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#pablo">Action</a>
+                                <a class="dropdown-item" href="#pablo">Another action</a>
+                                <a class="dropdown-item" href="#pablo">Something else</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <div class="table-full-width table-responsive">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Create Real Account</p>
+                                        <p class="text-muted">Set up real account to start earning</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Make a Deposit</p>
+                                        <p class="text-muted">Make a deposit using your favorite 
+                                            payment option in order to start making profitable trades 
+                                            on your favorite trading assets.</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Verify Account</p>
+                                        <p class="text-muted">Upload your document to verify your identity.
+                                            Add a valid Identity card, Passport or Drivers License to 
+                                            verify your account</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Place a Trade</p>
+                                        <p class="text-muted">Place a trade on any of your favorite tradable assets.</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Connect Your Wallet</p>
+                                        <p class="text-muted">Connect your favorite crypto wallet to trade
+                                            and profit on crypto trades directly from your wallet
+                                            </p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                            <span class="check"></span>
+                            </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="title">Trade & Earn Crypto</p>
+                                        <p class="text-muted">Trade your favorite cryptocurrencies amd earn bonuses while trading them.</p>
+                                    </td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" title="" class="btn btn-link"
+                                                data-original-title="Edit Task">
+                                            <i class="tim-icons icon-pencil"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4 class="card-title"> Trade History</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table tablesorter " id="">
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        Symbol
+                                    </th>
+                                    <th>
+                                        Asset Type
+                                    </th>
+                                    <th>
+                                        Stake
+                                    </th>
+                                    <th class="text-center">
+                                        Profit
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        Dakota Rice
+                                    </td>
+                                    <td>
+                                        Niger
+                                    </td>
+                                    <td>
+                                        Oud-Turnhout
+                                    </td>
+                                    <td class="text-center">
+                                        $36,738
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Minerva Hooper
+                                    </td>
+                                    <td>
+                                        Curaçao
+                                    </td>
+                                    <td>
+                                        Sinaai-Waas
+                                    </td>
+                                    <td class="text-center">
+                                        $23,789
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sage Rodriguez
+                                    </td>
+                                    <td>
+                                        Netherlands
+                                    </td>
+                                    <td>
+                                        Baileux
+                                    </td>
+                                    <td class="text-center">
+                                        $56,142
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Philip Chaney
+                                    </td>
+                                    <td>
+                                        Korea, South
+                                    </td>
+                                    <td>
+                                        Overland Park
+                                    </td>
+                                    <td class="text-center">
+                                        $38,735
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Doris Greene
+                                    </td>
+                                    <td>
+                                        Malawi
+                                    </td>
+                                    <td>
+                                        Feldkirchen in Kärnten
+                                    </td>
+                                    <td class="text-center">
+                                        $63,542
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Mason Porter
+                                    </td>
+                                    <td>
+                                        Chile
+                                    </td>
+                                    <td>
+                                        Gloucester
+                                    </td>
+                                    <td class="text-center">
+                                        $78,615
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Jon Porter
+                                    </td>
+                                    <td>
+                                        Portugal
+                                    </td>
+                                    <td>
+                                        Gloucester
+                                    </td>
+                                    <td class="text-center">
+                                        $98,615
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}
